@@ -53,17 +53,7 @@ public class UserServiceImpl implements UserService {
 		
 	}
 
-	@Override
-	public User updateUser(Long userId, User user) {
-		User local = this.userRepositiry.findById(userId).orElseThrow(null);
-		if (local == null) {
-			System.out.println("doesn't exist !!!");
-		}else {
-			local = this.userRepositiry.save(user);
-	    
-		}
-		return local;
-	}
+	
 
 	
 	
