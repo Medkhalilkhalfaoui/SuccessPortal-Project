@@ -1,5 +1,7 @@
 package com.exam.examserver.controllers;
 
+import java.security.Principal;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -9,6 +11,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -17,10 +20,11 @@ import com.exam.examserver.config.JwtUtils;
 import com.exam.examserver.helper.UserNotFoundException;
 import com.exam.examserver.models.JwtRequest;
 import com.exam.examserver.models.JwtResponse;
+import com.exam.examserver.models.User;
 import com.exam.examserver.services.impl.UserDetailsServiceImpl;
 
 @RestController
-
+@CrossOrigin("*")
 public class AuthenticateController {
 	
 	@Autowired
@@ -60,5 +64,11 @@ public class AuthenticateController {
 		}catch (BadCredentialsException e) {
 			throw new Exception(" Invalid Credentials "+e.getMessage());
 		}
+	}
+	
+	// return the current user details
+	@GetMapping("/current-user")
+	public User getCurrentUser(Principal principal) {
+		return ((User)this.userDetailsServiceImpl.loadUserByUsername(principal.getName()));
 	}
 }
