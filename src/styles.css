@@ -8,3 +8,18 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 .full-width{
     width: 100%;
 }
+.mt20{
+    margin-top: 20px;
+}
+.mt10{
+    margin-top: 10px;
+}
+.mr20{
+    margin-right: 20px;
+}
+.ml20{
+    margin-left: 20px;
+}
+.ml10{
+    margin-left: 10px;
+}

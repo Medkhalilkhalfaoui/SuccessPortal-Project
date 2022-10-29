@@ -23,10 +23,21 @@ export class SignupComponent implements OnInit {
   ngOnInit(): void {
   }
   formSubmit(){
-    console.log(this.user);
-    if(this.user.username==''||this.user.username== null){
+    //console.log(this.user);
+    if(this.user.username.trim()==''||this.user.username== null){
       //alert("user is required !!");
       this.snack.open('Username is required !!','',{duration: 3000});
+      return;
+
+    }
+    if(this.user.password== null||this.user.password.trim()== ''||
+    this.user.firstName.trim()== ''|| 
+    this.user.lastName.trim()==''|| 
+    this.user.phone=='' ||
+    this.user.email.trim()==''
+    
+    ){
+      this.snack.open('all field is required !!','',{duration: 3000});
       return;
 
     }
@@ -35,14 +46,18 @@ export class SignupComponent implements OnInit {
         //success
         console.log(data);
         //alert('SUCCESS');
-        Swal.fire('Success done !!','user id is '+ data.id,'success')
+       
+          Swal.fire('Success done !!','user id is '+ data.id,'success')
+
+        
+        
 
     },
     (error)=>{
       //error
       console.log(error);
       //alert('something went wrong');
-      this.snack.open('something went wrong !!','',{duration: 300});
+      this.snack.open('something went wrong or username used !!','',{duration: 300});
     }
     )
   }

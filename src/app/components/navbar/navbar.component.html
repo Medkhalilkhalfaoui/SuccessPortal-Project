@@ -14,7 +14,7 @@
       <button *ngIf="isLoggedIn" (click)="logout()" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
         Logout
       </button>
-      <button *ngIf="isLoggedIn && user!=null" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+      <button *ngIf="isLoggedIn && user!=null" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/admin/profile">
         {{ login.getUser().username}}
       </button>
     

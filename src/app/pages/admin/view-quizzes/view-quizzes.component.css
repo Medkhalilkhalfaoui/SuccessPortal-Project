@@ -1,0 +1,14 @@
+.example-header-image {
+    background-image: url('../../../../assets/examen.png');
+    background-size: cover;
+  }
+  .ml20{
+    margin-left: 20px;
+  }
+  .ml10{
+    margin-left: 10px;
+  }
+  .mat-raised-button{
+    color: #f0fff3;
+    background-color:gray;
+  }
