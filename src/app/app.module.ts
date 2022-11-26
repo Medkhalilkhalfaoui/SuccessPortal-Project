@@ -32,6 +32,15 @@ import { AddQuizComponent } from './pages/admin/add-quiz/add-quiz.component';
 import {MatSlideToggleModule} from '@angular/material/slide-toggle';
 import {MatSelectModule} from '@angular/material/select';
 import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.component';
+import { ViewQuizQuestionsComponent } from './pages/admin/view-quiz-questions/view-quiz-questions.component';
+import { AddQuestionComponent } from './pages/admin/add-question/add-question.component';
+import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
+import { SidebarUserComponent } from './pages/user/sidebar-user/sidebar-user.component';
+import { LoadQuizComponent } from './pages/user/load-quiz/load-quiz.component';
+import { InstructionsComponent } from './pages/user/instructions/instructions.component';
+import { StartComponent } from './pages/user/start/start.component';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+
 
 
 @NgModule({
@@ -52,6 +61,14 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
     ViewQuizzesComponent,
     AddQuizComponent,
     UpdateQuizComponent,
+    ViewQuizQuestionsComponent,
+    AddQuestionComponent,
+    SidebarUserComponent,
+    LoadQuizComponent,
+    InstructionsComponent,
+    StartComponent,
+    
+    
    
   ],
   imports: [
@@ -70,7 +87,9 @@ import { UpdateQuizComponent } from './pages/admin/update-quiz/update-quiz.compo
     MatIconModule,
     MatListModule,
     MatSlideToggleModule,
-    MatSelectModule
+    MatSelectModule,
+    CKEditorModule,
+    MatProgressSpinnerModule
   ],
   providers: [authInterceptorProviders],
   bootstrap: [AppComponent]

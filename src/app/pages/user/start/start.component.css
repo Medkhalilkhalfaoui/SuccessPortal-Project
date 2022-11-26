@@ -1,0 +1,6 @@
+.mt20{
+    margin-top: 20px;
+}
+.uploader-status ::ng-deep .mat-progress-spinner circle, .mat-spinner circle {
+    stroke: lightgreen;
+}

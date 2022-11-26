@@ -1,21 +1,23 @@
-<mat-toolbar color="primary">
+<mat-toolbar color="primary" style="padding-top:5px ;">
     <button routerLink="/" mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
-      <mat-icon>menu_book</mat-icon>
+      <!-- <mat-icon>menu_book</mat-icon> -->
+      <img src="../../../assets/quiz.png" width="40" height="40" class="pb">
     </button>
-    <span>Examportal</span>
+    <span class="ml" style="color:darkblue;"><span style="color:lightgreen ;">Success</span>portal</span>
     <span class="example-spacer"></span>
-    <button *ngIf="!isLoggedIn" routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button *ngIf="!isLoggedIn" style="color:darkblue;" routerLink="/login" mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
       Login
     </button>
-    <button *ngIf="!isLoggedIn" routerLink="/signup" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+    <button *ngIf="!isLoggedIn"  routerLink="/signup" style="margin-left: 20px; margin-right: 20px; color:darkblue; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
      Register
       </button>
-      
-      <button *ngIf="isLoggedIn" (click)="logout()" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
-        Logout
+      <button *ngIf="isLoggedIn && user!=null" style="margin-left: 20px; margin-right: 40px; color:darkblue; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/admin/profile">
+        <mat-icon style="color:darkblue;" >account_circle</mat-icon> {{ login.getUser().username}}
       </button>
-      <button *ngIf="isLoggedIn && user!=null" style="margin-left: 20px; margin-right: 20px; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon" routerLink="/admin/profile">
-        {{ login.getUser().username}}
+      <button *ngIf="isLoggedIn" (click)="logout()" style="margin-left: 10px; margin-right: 40px; color:lightgreen ; " mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon style="font-size: large; color:lightgreen ;" >logout</mat-icon> Logout
       </button>
+     
     
   </mat-toolbar>
+  
