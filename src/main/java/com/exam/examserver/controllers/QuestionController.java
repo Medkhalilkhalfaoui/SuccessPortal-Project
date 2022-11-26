@@ -53,13 +53,27 @@ public class QuestionController {
 			 * return ResponseEntity.ok(questionsofQuiz);
 			 */
 	  
-	  Quiz quiz = this.quizService.getQuiz(qid); Set<Question> questions =
-	  quiz.getQuestions(); ArrayList<Question> list = new
-	  ArrayList<Question>(questions); if
-	  (list.size()>Integer.parseInt(quiz.getNumberOfQuestions())) { list =
-	  (ArrayList<Question>) list.subList(0,
-	  Integer.parseInt(quiz.getNumberOfQuestions()+1)); }
+	  Quiz quiz = this.quizService.getQuiz(qid); 
+	  Set<Question> questions =quiz.getQuestions(); 
+	  ArrayList<Question> list = new ArrayList<Question>(questions); 
+	  if(list.size()>Integer.parseInt(quiz.getNumberOfQuestions())) { 
+		  list = (ArrayList<Question>) list.subList(0,Integer.parseInt(quiz.getNumberOfQuestions()+1)); 
+		  }
 	  java.util.Collections.shuffle(list); return ResponseEntity.ok(list);
+	  
+	  }
+	  
+	  @GetMapping("/quiz/all/{qid}") 
+	  public ResponseEntity<?>getQuestionsofQuizAdmin(@PathVariable("qid") Long qid){
+			
+			  Quiz quiz = new Quiz();
+			  quiz.setQid(qid); 
+			  Set<Question> questionsofQuiz =this.service.getQuestionsOfQuiz(quiz);
+			  
+			  return ResponseEntity.ok(questionsofQuiz);
+			 
+	  
+	 
 	  
 	  }
 	  

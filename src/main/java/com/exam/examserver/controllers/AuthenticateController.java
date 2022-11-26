@@ -54,6 +54,7 @@ public class AuthenticateController {
 		return ResponseEntity.ok(new JwtResponse(token));
 		
 	}
+	
 
 	private void authenticate(String username, String password) throws Exception {
 		try {
