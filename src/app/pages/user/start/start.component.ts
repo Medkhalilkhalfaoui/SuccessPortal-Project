@@ -19,6 +19,8 @@ export class StartComponent implements OnInit {
   attempted =0;
   isSubmit = false;
   timer:any;
+  t:any;
+  
 
 
   ngOnInit(): void {
@@ -33,13 +35,14 @@ export class StartComponent implements OnInit {
     this.question.getQuestionOfQuizForTest(this.qid).subscribe((data)=>{
       //console.log(data)
       this.questions=data;
-      this.timer= this.questions.length * 0.2 * 60;
-      this.questions.forEach((q:any) => {
+      this.timer= this.questions.length * 0.5 * 60;
+      this.t=this.questions.length * 0.5 * 60;
+     /*  this.questions.forEach((q:any) => {
         q['givenAnswer']= '';
         
-      });
+      }); */
       this.startTimer();
-      console.log(data);
+      //console.log(data);
       
     },(error)=>{
       console.log(error);
@@ -81,12 +84,23 @@ export class StartComponent implements OnInit {
   }
   getFromattedTime(){
     let mm= Math.floor(this.timer/60)
-    let ss = this.timer-mm*60
+    let ss = parseFloat(Number(this.timer-mm*60 ).toFixed(2));
     return mm+' min :'+ss+' sec ';
 
   }
   evalQuiz(){
-    this.isSubmit = true
+    //call to server to check questions
+    this.question.evalQuiz(this.questions).subscribe((data:any)=>{
+      //console.log(data);
+      this.marksGot = parseFloat(Number(data.marksGot).toFixed(2));
+      this.correctAnswers = data.correctAnswers;
+      this.attempted = data.attempted;
+      this.isSubmit = true
+    },(error)=>{
+      console.log(error);
+    });
+
+    /* this.isSubmit = true
     this.questions.forEach((q:any)=>{
         if(q.givenAnswer == q.answer){
             this.correctAnswers++;
@@ -102,8 +116,11 @@ export class StartComponent implements OnInit {
     console.log('Correct Answers :'+this.correctAnswers);
     console.log('Marks Got '+this.marksGot);
     console.log('Attempted : '+this.attempted);
-    console.log(this.questions);
+    console.log(this.questions); */
 
+  }
+  printPage(){
+    window.print();
   }
 
 }
