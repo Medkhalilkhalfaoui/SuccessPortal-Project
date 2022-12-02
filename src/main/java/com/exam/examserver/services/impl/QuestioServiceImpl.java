@@ -58,4 +58,10 @@ public class QuestioServiceImpl implements QuestionService{
 		
 	}
 
+	@Override
+	public Question get(Long questionsId) {
+		
+		return this.questionRepository.getOne(questionsId);
+	}
+
 }

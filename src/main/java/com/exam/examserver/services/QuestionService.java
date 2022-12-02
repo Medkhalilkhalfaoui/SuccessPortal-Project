@@ -20,5 +20,7 @@ public interface QuestionService {
 	
 	public void deleteQuestion(Long qId);
 	
+	public Question get(Long questionsId);
+	
 
 }
